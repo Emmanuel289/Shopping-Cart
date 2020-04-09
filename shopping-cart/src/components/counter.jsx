@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 class Counter extends Component{
     state ={
-        count: 0,
+        count: 3,
+        tags: ['tag1', 'tag2', 'tag3']
         
     };
 
@@ -13,6 +14,10 @@ class Counter extends Component{
         <div>
              <span className = {this.getBadgeClasses()}>{this.formatCount()}</span>
              <button className = "btn btn-secondary btn-sm">Increment</button>
+             <ul> 
+                {this.state.tags.map(tag =><li key = {tag}>{tag}</li>)} 
+
+             </ul>
         </div>
         );
 
@@ -21,7 +26,7 @@ class Counter extends Component{
     // change badge color depending on the current number of items
     getBadgeClasses() {
         let classes = "badge m-2";
-        classes += (this.state.badge === 0) ? "badge-warning" : "badge-primary";
+        classes += (this.state.count === 0) ? "badge-warning" : "badge-primary";
         return classes;
     }
     //check current number of items in cart
