@@ -6,13 +6,13 @@ class Counter extends Component {
     this.handleIncrement = this.handleIncrement.bind(this); // bind onclick handler to object of counter
   }*/
   state = {
-    count: 3,
+    value: this.props.value, // initialize the count property by setting it to the value
     tags: ["tag1", "tag2", "tag3"],
   };
 
   handleIncrement = (item) => {
     console.log(item);
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   renderTags() {
@@ -28,6 +28,7 @@ class Counter extends Component {
   }
 
   render() {
+    //console.log("props", this.props); log all the properties or attributes of Counter to the console
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
@@ -45,12 +46,12 @@ class Counter extends Component {
   // change badge color depending on the current number of items
   getBadgeClasses() {
     let classes = "badge m-2";
-    classes += this.state.count === 0 ? "badge-warning" : "badge-primary";
+    classes += this.state.value === 0 ? "badge-warning" : "badge-primary";
     return classes;
   }
   //check current number of items in cart
   formatCount() {
-    const { count } = this.state;
+    const { value: count } = this.state;
     return count === 0 ? "Zero" : count;
   }
 }
