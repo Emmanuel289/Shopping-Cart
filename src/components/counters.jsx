@@ -34,6 +34,7 @@ class Counters extends Component {
   };
 
   render() {
+    console.log("Counters-Rendered");
     return (
       <div>
         <button

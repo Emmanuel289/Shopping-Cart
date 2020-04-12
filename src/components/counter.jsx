@@ -1,7 +1,24 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  componentDidUpdate(prevProps, prevState) {
+    //called after a component's states or props are updated.
+    //the new state/props are compared with the old values and if there's a change,
+    //an Ajax request can be made to the server to get new data and if there are no new changes,
+    //then no reqs are made
+    console.log("prevProps", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // Make an Ajax call to a server and get new data if previous state is different than the current state
+    }
+  }
+
+  componentWillUnmount() {
+    //called before a component is removed from the DOM
+    console.log("Counter-Unmount");
+  }
   render() {
+    console.log("Counter-Rendered");
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
